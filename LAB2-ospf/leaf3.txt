@@ -41,6 +41,7 @@ interface Ethernet1/7
 interface loopback0
   description "For UNDERLAY"
   ip address 172.16.2.3/32
+  ip router ospf UNDERLAY area 0.0.0.0
 !
 boot nxos bootflash:/nxos.7.0.3.I7.4.bin
 !
