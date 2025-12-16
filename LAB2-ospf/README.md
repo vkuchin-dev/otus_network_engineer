@@ -40,9 +40,9 @@
 [Конфигурацию spine2 можно увидеть здесь](../LAB2-ospf/spine2.txt)  
 
 *Диагностика соседства ospf, маршрутов ospf и loopback-ов через ospf:*  
-[Доступность линковых адресов со стороны spine1](../LAB2-ospf/spine1-ospf.txt)  
-[Доступность линковых адресов со стороны spine2](../LAB2-ospf/spine2-ospf.txt)  
-[Доступность линковых адресов со стороны leaf1](../LAB2-ospf/leaf1-ospf.txt)  
-[Доступность линковых адресов со стороны leaf2](../LAB2-ospf/leaf2-ospf.txt)  
-[Доступность линковых адресов со стороны leaf3](../LAB2-ospf/leaf3-ospf.txt)
+[spine1](../LAB2-ospf/spine1-ospf.txt)  
+[spine2](../LAB2-ospf/spine2-ospf.txt)  
+[leaf1](../LAB2-ospf/leaf1-ospf.txt)  
+[leaf2](../LAB2-ospf/leaf2-ospf.txt)  
+[leaf3](../LAB2-ospf/leaf3-ospf.txt)
 
