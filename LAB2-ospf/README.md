@@ -39,7 +39,7 @@
 [Конфигурацию spine1 можно увидеть здесь](../LAB2-ospf/spine1.txt)  
 [Конфигурацию spine2 можно увидеть здесь](../LAB2-ospf/spine2.txt)  
 
-*Диагностика соседства ospf, маршрутов ospf и loopback-ов через ospf:*  
+*Диагностика соседства ospf, маршрутов ospf и доступности loopback-ов через ospf:*  
 [spine1](../LAB2-ospf/spine1-ospf.txt)  
 [spine2](../LAB2-ospf/spine2-ospf.txt)  
 [leaf1](../LAB2-ospf/leaf1-ospf.txt)  
