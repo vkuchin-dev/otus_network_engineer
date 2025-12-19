@@ -1,0 +1,51 @@
+switchname leaf2
+vdc leaf2 id 1
+  limit-resource vlan minimum 16 maximum 4094
+  limit-resource vrf minimum 2 maximum 4096
+  limit-resource port-channel minimum 0 maximum 511
+  limit-resource u4route-mem minimum 248 maximum 248
+  limit-resource u6route-mem minimum 96 maximum 96
+  limit-resource m4route-mem minimum 58 maximum 58
+  limit-resource m6route-mem minimum 8 maximum 8
+!
+feature telnet
+feature ospf
+!
+vlan 10
+  name PC
+!
+vrf context management
+!
+interface Ethernet1/1
+  description "To spine1"
+  no switchport
+  mtu 9200
+  ip address 10.1.1.6/30
+  ip ospf cost 10
+  ip router ospf UNDERLAY area 0.0.0.0
+  no shutdown
+!
+interface Ethernet1/2
+  description "To spine2"
+  no switchport
+  mtu 9200
+  ip address 10.2.1.6/30
+  ip ospf cost 10
+  ip router ospf UNDERLAY area 0.0.0.0
+  no shutdown
+!
+interface Ethernet1/7
+  description "PC"
+  switchport access vlan 10
+!
+interface loopback0
+  description "For UNDERLAY"
+  ip address 172.16.2.2/32
+  ip router ospf UNDERLAY area 0.0.0.0
+!
+boot nxos bootflash:/nxos.7.0.3.I7.4.bin
+!
+router ospf UNDERLAY
+  router-id 172.16.2.2
+
+

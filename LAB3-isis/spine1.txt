@@ -1,0 +1,51 @@
+version 7.0(3)I7(4)
+switchname spine1
+vdc spine1 id 1
+  limit-resource vlan minimum 16 maximum 4094
+  limit-resource vrf minimum 2 maximum 4096
+  limit-resource port-channel minimum 0 maximum 511
+  limit-resource u4route-mem minimum 248 maximum 248
+  limit-resource u6route-mem minimum 96 maximum 96
+  limit-resource m4route-mem minimum 58 maximum 58
+  limit-resource m6route-mem minimum 8 maximum 8
+!
+feature telnet
+feature ospf
+!
+interface Ethernet1/1
+  description "To leaf1"
+  no switchport
+  mtu 9200
+  ip address 10.1.1.1/30
+  ip ospf cost 10
+  ip router ospf UNDERLAY area 0.0.0.0
+  no shutdown
+!
+interface Ethernet1/2
+  description "To leaf2"
+  no switchport
+  mtu 9200
+  ip address 10.1.1.5/30
+  ip ospf cost 10
+  ip router ospf UNDERLAY area 0.0.0.0
+  no shutdown
+!
+interface Ethernet1/3
+  description "To leaf3"
+  no switchport
+  mtu 9200
+  ip address 10.1.1.9/30
+  ip ospf cost 10
+  ip router ospf UNDERLAY area 0.0.0.0
+  no shutdown
+!
+interface loopback0
+  description "For UNDERLAY"
+  ip address 172.16.1.1/32
+  ip router ospf UNDERLAY area 0.0.0.0
+!
+boot nxos bootflash:/nxos.7.0.3.I7.4.bin
+!
+router ospf UNDERLAY
+  router-id 172.16.1.1
+

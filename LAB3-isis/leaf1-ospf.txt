@@ -1,0 +1,77 @@
+leaf1# sh ip ospf nei
+ OSPF Process ID UNDERLAY VRF default
+ Total number of neighbors: 2
+ Neighbor ID     Pri State            Up Time  Address         Interface
+ 172.16.1.1        1 FULL/BDR         00:36:29 10.1.1.1        Eth1/1
+ 172.16.1.2        1 FULL/BDR         00:36:33 10.2.1.1        Eth1/2
+leaf1#
+leaf1# sh ip route ospf
+IP Route Table for VRF "default"
+'*' denotes best ucast next-hop
+'**' denotes best mcast next-hop
+'[x/y]' denotes [preference/metric]
+'%<string>' in via output denotes VRF <string>
+
+10.1.1.4/30, ubest/mbest: 1/0
+    *via 10.1.1.1, Eth1/1, [110/20], 00:36:38, ospf-UNDERLAY, intra
+10.1.1.8/30, ubest/mbest: 1/0
+    *via 10.1.1.1, Eth1/1, [110/20], 00:36:38, ospf-UNDERLAY, intra
+10.2.1.4/30, ubest/mbest: 1/0
+    *via 10.2.1.1, Eth1/2, [110/20], 00:36:38, ospf-UNDERLAY, intra
+10.2.1.8/30, ubest/mbest: 1/0
+    *via 10.2.1.1, Eth1/2, [110/20], 00:36:38, ospf-UNDERLAY, intra
+172.16.1.1/32, ubest/mbest: 1/0
+    *via 10.1.1.1, Eth1/1, [110/11], 00:25:44, ospf-UNDERLAY, intra
+172.16.1.2/32, ubest/mbest: 1/0
+    *via 10.2.1.1, Eth1/2, [110/11], 00:24:56, ospf-UNDERLAY, intra
+172.16.2.2/32, ubest/mbest: 2/0
+    *via 10.1.1.1, Eth1/1, [110/21], 00:28:29, ospf-UNDERLAY, intra
+    *via 10.2.1.1, Eth1/2, [110/21], 00:28:29, ospf-UNDERLAY, intra
+172.16.2.3/32, ubest/mbest: 2/0
+    *via 10.1.1.1, Eth1/1, [110/21], 00:26:36, ospf-UNDERLAY, intra
+    *via 10.2.1.1, Eth1/2, [110/21], 00:26:36, ospf-UNDERLAY, intra
+
+leaf1# ping 172.16.1.1
+PING 172.16.1.1 (172.16.1.1): 56 data bytes
+64 bytes from 172.16.1.1: icmp_seq=0 ttl=254 time=12.379 ms
+64 bytes from 172.16.1.1: icmp_seq=1 ttl=254 time=3.456 ms
+64 bytes from 172.16.1.1: icmp_seq=2 ttl=254 time=2.266 ms
+64 bytes from 172.16.1.1: icmp_seq=3 ttl=254 time=2.191 ms
+64 bytes from 172.16.1.1: icmp_seq=4 ttl=254 time=2.045 ms
+
+--- 172.16.1.1 ping statistics ---
+5 packets transmitted, 5 packets received, 0.00% packet loss
+round-trip min/avg/max = 2.045/4.467/12.379 ms
+leaf1# ping 172.16.1.2
+PING 172.16.1.2 (172.16.1.2): 56 data bytes
+64 bytes from 172.16.1.2: icmp_seq=0 ttl=254 time=4.316 ms
+64 bytes from 172.16.1.2: icmp_seq=1 ttl=254 time=3.553 ms
+64 bytes from 172.16.1.2: icmp_seq=2 ttl=254 time=3.727 ms
+64 bytes from 172.16.1.2: icmp_seq=3 ttl=254 time=3.259 ms
+64 bytes from 172.16.1.2: icmp_seq=4 ttl=254 time=2.253 ms
+
+--- 172.16.1.2 ping statistics ---
+5 packets transmitted, 5 packets received, 0.00% packet loss
+round-trip min/avg/max = 2.253/3.421/4.316 ms
+leaf1# ping 172.16.2.2
+PING 172.16.2.2 (172.16.2.2): 56 data bytes
+64 bytes from 172.16.2.2: icmp_seq=0 ttl=253 time=6.46 ms
+64 bytes from 172.16.2.2: icmp_seq=1 ttl=253 time=6.135 ms
+64 bytes from 172.16.2.2: icmp_seq=2 ttl=253 time=5.184 ms
+64 bytes from 172.16.2.2: icmp_seq=3 ttl=253 time=5.265 ms
+64 bytes from 172.16.2.2: icmp_seq=4 ttl=253 time=4.385 ms
+
+--- 172.16.2.2 ping statistics ---
+5 packets transmitted, 5 packets received, 0.00% packet loss
+round-trip min/avg/max = 4.385/5.485/6.46 ms
+leaf1# ping 172.16.2.3
+PING 172.16.2.3 (172.16.2.3): 56 data bytes
+64 bytes from 172.16.2.3: icmp_seq=0 ttl=253 time=6.19 ms
+64 bytes from 172.16.2.3: icmp_seq=1 ttl=253 time=5.397 ms
+64 bytes from 172.16.2.3: icmp_seq=2 ttl=253 time=5.288 ms
+64 bytes from 172.16.2.3: icmp_seq=3 ttl=253 time=5.028 ms
+64 bytes from 172.16.2.3: icmp_seq=4 ttl=253 time=3.962 ms
+
+--- 172.16.2.3 ping statistics ---
+5 packets transmitted, 5 packets received, 0.00% packet loss
+round-trip min/avg/max = 3.962/5.172/6.19 ms

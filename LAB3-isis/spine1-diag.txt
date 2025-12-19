@@ -1,0 +1,41 @@
+spine1(config)# sh ip ospf nei
+ OSPF Process ID UNDERLAY VRF default
+ Total number of neighbors: 3
+ Neighbor ID     Pri State            Up Time  Address         Interface
+ 172.16.2.1        1 FULL/BDR         00:29:28 10.1.1.2        Eth1/1
+ 172.16.2.2        1 FULL/BDR         00:11:02 10.1.1.6        Eth1/2
+ 172.16.2.3        1 FULL/DR          00:00:14 10.1.1.10       Eth1/3
+spine1(config)# ping 10.1.1.2
+PING 10.1.1.2 (10.1.1.2): 56 data bytes
+64 bytes from 10.1.1.2: icmp_seq=0 ttl=254 time=21.663 ms
+64 bytes from 10.1.1.2: icmp_seq=1 ttl=254 time=2.994 ms
+64 bytes from 10.1.1.2: icmp_seq=2 ttl=254 time=2.2 ms
+64 bytes from 10.1.1.2: icmp_seq=3 ttl=254 time=2.338 ms
+64 bytes from 10.1.1.2: icmp_seq=4 ttl=254 time=1.732 ms
+
+--- 10.1.1.2 ping statistics ---
+5 packets transmitted, 5 packets received, 0.00% packet loss
+round-trip min/avg/max = 1.732/6.185/21.663 ms
+spine1(config)# ^C
+spine1(config)# ping 10.1.1.6
+PING 10.1.1.6 (10.1.1.6): 56 data bytes
+64 bytes from 10.1.1.6: icmp_seq=0 ttl=254 time=9.104 ms
+64 bytes from 10.1.1.6: icmp_seq=1 ttl=254 time=3.06 ms
+64 bytes from 10.1.1.6: icmp_seq=2 ttl=254 time=2.076 ms
+64 bytes from 10.1.1.6: icmp_seq=3 ttl=254 time=1.889 ms
+64 bytes from 10.1.1.6: icmp_seq=4 ttl=254 time=1.849 ms
+^C
+--- 10.1.1.6 ping statistics ---
+5 packets transmitted, 5 packets received, 0.00% packet loss
+round-trip min/avg/max = 1.849/3.595/9.104 ms
+spine1(config)# ping 10.1.1.10
+PING 10.1.1.10 (10.1.1.10): 56 data bytes
+64 bytes from 10.1.1.10: icmp_seq=0 ttl=254 time=7.452 ms
+64 bytes from 10.1.1.10: icmp_seq=1 ttl=254 time=2.024 ms
+64 bytes from 10.1.1.10: icmp_seq=2 ttl=254 time=1.905 ms
+64 bytes from 10.1.1.10: icmp_seq=3 ttl=254 time=1.73 ms
+64 bytes from 10.1.1.10: icmp_seq=4 ttl=254 time=1.88 ms
+^C
+--- 10.1.1.10 ping statistics ---
+5 packets transmitted, 5 packets received, 0.00% packet loss
+round-trip min/avg/max = 1.73/2.998/7.452 ms
