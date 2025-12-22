@@ -1,0 +1,80 @@
+leaf1(config)# sh ip ospf nei
+Note:  process currently not running
+leaf1(config)# sh isis adjacency
+IS-IS process: UNDERLAY VRF: default
+IS-IS adjacency database:
+Legend: '!': No AF level connectivity in given topology
+System ID       SNPA            Level  State  Hold Time  Interface
+spine1          5000.0001.0007  1      UP     00:00:26   Ethernet1/1
+spine2          5000.0002.0007  1      UP     00:00:26   Ethernet1/2
+
+leaf1(config)# sh ip route isis
+IP Route Table for VRF "default"
+'*' denotes best ucast next-hop
+'**' denotes best mcast next-hop
+'[x/y]' denotes [preference/metric]
+'%<string>' in via output denotes VRF <string>
+
+10.1.1.4/30, ubest/mbest: 1/0
+    *via 10.1.1.1, Eth1/1, [115/20], 00:30:37, isis-UNDERLAY, L1
+10.1.1.8/30, ubest/mbest: 1/0
+    *via 10.1.1.1, Eth1/1, [115/20], 00:30:37, isis-UNDERLAY, L1
+10.2.1.4/30, ubest/mbest: 1/0
+    *via 10.2.1.1, Eth1/2, [115/20], 00:30:06, isis-UNDERLAY, L1
+10.2.1.8/30, ubest/mbest: 1/0
+    *via 10.2.1.1, Eth1/2, [115/20], 00:30:06, isis-UNDERLAY, L1
+172.16.1.1/32, ubest/mbest: 1/0
+    *via 10.1.1.1, Eth1/1, [115/11], 00:30:37, isis-UNDERLAY, L1
+172.16.1.2/32, ubest/mbest: 1/0
+    *via 10.2.1.1, Eth1/2, [115/11], 00:30:06, isis-UNDERLAY, L1
+172.16.2.2/32, ubest/mbest: 2/0
+    *via 10.1.1.1, Eth1/1, [115/21], 00:30:36, isis-UNDERLAY, L1
+    *via 10.2.1.1, Eth1/2, [115/21], 00:30:06, isis-UNDERLAY, L1
+172.16.2.3/32, ubest/mbest: 2/0
+    *via 10.1.1.1, Eth1/1, [115/21], 00:30:36, isis-UNDERLAY, L1
+    *via 10.2.1.1, Eth1/2, [115/21], 00:30:06, isis-UNDERLAY, L1
+
+leaf1(config)# ping 172.16.1.1
+PING 172.16.1.1 (172.16.1.1): 56 data bytes
+64 bytes from 172.16.1.1: icmp_seq=0 ttl=254 time=15.255 ms
+64 bytes from 172.16.1.1: icmp_seq=1 ttl=254 time=2.601 ms
+64 bytes from 172.16.1.1: icmp_seq=2 ttl=254 time=1.923 ms
+64 bytes from 172.16.1.1: icmp_seq=3 ttl=254 time=1.823 ms
+64 bytes from 172.16.1.1: icmp_seq=4 ttl=254 time=1.708 ms
+
+--- 172.16.1.1 ping statistics ---
+5 packets transmitted, 5 packets received, 0.00% packet loss
+round-trip min/avg/max = 1.708/4.661/15.255 ms
+leaf1(config)# ping 172.16.1.2
+PING 172.16.1.2 (172.16.1.2): 56 data bytes
+64 bytes from 172.16.1.2: icmp_seq=0 ttl=254 time=3.471 ms
+64 bytes from 172.16.1.2: icmp_seq=1 ttl=254 time=4.632 ms
+64 bytes from 172.16.1.2: icmp_seq=2 ttl=254 time=2.093 ms
+64 bytes from 172.16.1.2: icmp_seq=3 ttl=254 time=2.15 ms
+64 bytes from 172.16.1.2: icmp_seq=4 ttl=254 time=2.303 ms
+
+--- 172.16.1.2 ping statistics ---
+5 packets transmitted, 5 packets received, 0.00% packet loss
+round-trip min/avg/max = 2.093/2.929/4.632 ms
+leaf1(config)# ping 172.16.2.2
+PING 172.16.2.2 (172.16.2.2): 56 data bytes
+64 bytes from 172.16.2.2: icmp_seq=0 ttl=253 time=7.176 ms
+64 bytes from 172.16.2.2: icmp_seq=1 ttl=253 time=4.897 ms
+64 bytes from 172.16.2.2: icmp_seq=2 ttl=253 time=3.775 ms
+64 bytes from 172.16.2.2: icmp_seq=3 ttl=253 time=3.83 ms
+64 bytes from 172.16.2.2: icmp_seq=4 ttl=253 time=3.725 ms
+
+--- 172.16.2.2 ping statistics ---
+5 packets transmitted, 5 packets received, 0.00% packet loss
+round-trip min/avg/max = 3.725/4.68/7.176 ms
+leaf1(config)# ping 172.16.2.3
+PING 172.16.2.3 (172.16.2.3): 56 data bytes
+64 bytes from 172.16.2.3: icmp_seq=0 ttl=253 time=6.27 ms
+64 bytes from 172.16.2.3: icmp_seq=1 ttl=253 time=4.051 ms
+64 bytes from 172.16.2.3: icmp_seq=2 ttl=253 time=3.755 ms
+64 bytes from 172.16.2.3: icmp_seq=3 ttl=253 time=4.583 ms
+64 bytes from 172.16.2.3: icmp_seq=4 ttl=253 time=6.157 ms
+
+--- 172.16.2.3 ping statistics ---
+5 packets transmitted, 5 packets received, 0.00% packet loss
+round-trip min/avg/max = 3.755/4.963/6.27 ms
