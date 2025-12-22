@@ -33,16 +33,16 @@
 
 
 *Конфигурация оборудования:*  
-[Конфигурацию leaf1 можно увидеть здесь](../LAB3-isis/leaf1.txt)  
-[Конфигурацию leaf2 можно увидеть здесь](../LAB3-isis/leaf2.txt)  
-[Конфигурацию leaf3 можно увидеть здесь](../LAB3-isis/leaf3.txt)  
-[Конфигурацию spine1 можно увидеть здесь](../LAB3-isis/spine1.txt)  
-[Конфигурацию spine2 можно увидеть здесь](../LAB3-isis/spine2.txt)  
+[Конфигурацию leaf1 можно увидеть здесь](../LAB3-isis/leaf1-isis-cfg.txt)  
+[Конфигурацию leaf2 можно увидеть здесь](../LAB3-isis/leaf2-isis-cfg.txt)  
+[Конфигурацию leaf3 можно увидеть здесь](../LAB3-isis/leaf3-isis-cfg.txt)  
+[Конфигурацию spine1 можно увидеть здесь](../LAB3-isis/spine1-isis-cfg.txt)  
+[Конфигурацию spine2 можно увидеть здесь](../LAB3-isis/spine2-isis-cfg.txt)  
 
 *Диагностика соседства is-is, маршрутов is-is и доступности loopback-ов через is-is:*  
-[spine1](../LAB3-isis/spine1-ospf.txt)  
-[spine2](../LAB3-isis/spine2-ospf.txt)  
-[leaf1](../LAB3-isis/leaf1-ospf.txt)  
-[leaf2](../LAB3-isis/leaf2-ospf.txt)  
-[leaf3](../LAB3-isis/leaf3-ospf.txt)
+[spine1](../LAB3-isis/spine1-isis-diag.txt)  
+[spine2](../LAB3-isis/spine2-isis-diag.txt)  
+[leaf1](../LAB3-isis/leaf1-isis-diag.txt)  
+[leaf2](../LAB3-isis/leaf2-isis-diag.txt)  
+[leaf3](../LAB3-isis/leaf3-isis-diag.txt)
 
