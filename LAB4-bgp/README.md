@@ -33,7 +33,7 @@
 
 
 *Конфигурация оборудования:*  
-[Конфигурацию leaf1 можно увидеть здесь](../LAB3-isis/leaf1-isis-cfg.txt)  
+[Конфигурацию leaf1 можно увидеть 4 здесь](../LAB3-isis/leaf1-isis-cfg.txt)  
 [Конфигурацию leaf2 можно увидеть здесь](../LAB3-isis/leaf2-isis-cfg.txt)  
 [Конфигурацию leaf3 можно увидеть здесь](../LAB3-isis/leaf3-isis-cfg.txt)  
 [Конфигурацию spine1 можно увидеть здесь](../LAB3-isis/spine1-isis-cfg.txt)  
