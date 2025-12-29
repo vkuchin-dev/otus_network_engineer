@@ -10,7 +10,7 @@
 ### **План работ:**
 1. Собираем схему, распредаеляем адресное пространство.
 2. Включаем процесс bgp на всех устройств схемы. (spine1 и spine2 в AS:65000, leaf1 AS:65001, leaf2 AS:65002, leaf3:65003).
-3. Диагностика соседства, таблица маршрутизации, доступность всех loopback-ов устройств схемы.
+3. Диагностика соседства, таблицы маршрутизации, доступность всех loopback-ов устройств схемы.
 4. Фиксация результатов.
 
 ![Схема подключения следующая](/LAB4-bgp/design-bgp.jpg)
@@ -41,8 +41,8 @@
 
 *Диагностика соседства bgp, топология, таблица маршрутизации bgp и доступность loopback-ов через ebgp:*  
 [spine1](../LAB4-bgp/spine1-bgp-diag.txt)  
-[spine2](../LAB4-bgp/spine2-isis-diag.txt)  
-[leaf1](../LAB4-bgp/leaf1-isis-diag.txt)  
-[leaf2](../LAB4-bgp/leaf2-isis-diag.txt)  
-[leaf3](../LAB4-bgp/leaf3-isis-diag.txt)
+[spine2](../LAB4-bgp/spine2-bgp-diag.txt)  
+[leaf1](../LAB4-bgp/leaf1-bgp-diag.txt)  
+[leaf2](../LAB4-bgp/leaf2-bgp-diag.txt)  
+[leaf3](../LAB4-bgp/leaf3-bgp-diag.txt)
 
