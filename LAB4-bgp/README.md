@@ -13,7 +13,7 @@
 3. Диагностика соседства, таблица маршрутизации, доступность всех loopback-ов устройств схемы.
 4. Фиксация результатов.
 
-![Схема подключения следующая](/LAB4-bgp/design.jpg)
+![Схема подключения следующая](/LAB4-bgp/design-bgp.jpg)
 
 Таблица линковых адресов:
 
@@ -33,16 +33,16 @@
 
 
 *Конфигурация оборудования:*  
-[Конфигурацию leaf1 можно увидеть 4 здесь](../LAB3-isis/leaf1-isis-cfg.txt)  
-[Конфигурацию leaf2 можно увидеть здесь](../LAB3-isis/leaf2-isis-cfg.txt)  
-[Конфигурацию leaf3 можно увидеть здесь](../LAB3-isis/leaf3-isis-cfg.txt)  
-[Конфигурацию spine1 можно увидеть здесь](../LAB3-isis/spine1-isis-cfg.txt)  
-[Конфигурацию spine2 можно увидеть здесь](../LAB3-isis/spine2-isis-cfg.txt)  
+[Конфигурацию leaf1 можно увидеть здесь](../LAB4-bgp/leaf1-bgp-cfg.txt)  
+[Конфигурацию leaf2 можно увидеть здесь](../LAB4-bgp/leaf2-bgp-cfg.txt)  
+[Конфигурацию leaf3 можно увидеть здесь](../LAB4-bgp/leaf3-bgp-cfg.txt)  
+[Конфигурацию spine1 можно увидеть здесь](../LAB4-bgp/spine1-bgp-cfg.txt)  
+[Конфигурацию spine2 можно увидеть здесь](../LAB4-bgp/spine2-bgp-cfg.txt)  
 
-*Диагностика соседства is-is, маршрутов is-is и доступности loopback-ов через is-is:*  
-[spine1](../LAB3-isis/spine1-isis-diag.txt)  
-[spine2](../LAB3-isis/spine2-isis-diag.txt)  
-[leaf1](../LAB3-isis/leaf1-isis-diag.txt)  
-[leaf2](../LAB3-isis/leaf2-isis-diag.txt)  
-[leaf3](../LAB3-isis/leaf3-isis-diag.txt)
+*Диагностика соседства bgp, топология, таблица маршрутизации bgp и доступность loopback-ов через ebgp:*  
+[spine1](../LAB4-bgp/spine1-bgp-diag.txt)  
+[spine2](../LAB4-bgp/spine2-isis-diag.txt)  
+[leaf1](../LAB4-bgp/leaf1-isis-diag.txt)  
+[leaf2](../LAB4-bgp/leaf2-isis-diag.txt)  
+[leaf3](../LAB4-bgp/leaf3-isis-diag.txt)
 
