@@ -1,0 +1,201 @@
+leaf3(config)# sh ip bgp
+BGP routing table information for VRF default, address family IPv4 Unicast
+BGP table version is 20, Local Router ID is 172.16.2.3
+Status: s-suppressed, x-deleted, S-stale, d-dampened, h-history, *-valid, >-best
+Path type: i-internal, e-external, c-confed, l-local, a-aggregate, r-redist, I-i
+njected
+Origin codes: i - IGP, e - EGP, ? - incomplete, | - multipath, & - backup
+
+   Network            Next Hop            Metric     LocPrf     Weight Path
+*>e172.16.1.1/32      10.1.1.9                                       0 65000 i
+*>e172.16.1.2/32      10.2.1.9                                       0 65000 i
+*|e172.16.2.1/32      10.2.1.9                                       0 65000 65001 i
+*>e                   10.1.1.9                                       0 65000 65001 i
+*|e172.16.2.2/32      10.2.1.9                                       0 65000 65002 i
+*>e                   10.1.1.9                                       0 65000 65002 i
+*>l172.16.2.3/32      0.0.0.0                           100      32768 i
+#
+leaf3(config)# sh ip route bgp-65003
+IP Route Table for VRF "default"
+'*' denotes best ucast next-hop
+'**' denotes best mcast next-hop
+'[x/y]' denotes [preference/metric]
+'%<string>' in via output denotes VRF <string>
+
+172.16.1.1/32, ubest/mbest: 1/0
+    *via 10.1.1.9, [20/0], 03:37:17, bgp-65003, external, tag 65000
+172.16.1.2/32, ubest/mbest: 1/0
+    *via 10.2.1.9, [20/0], 03:28:50, bgp-65003, external, tag 65000
+172.16.2.1/32, ubest/mbest: 2/0
+    *via 10.1.1.9, [20/0], 03:37:17, bgp-65003, external, tag 65000
+    *via 10.2.1.9, [20/0], 03:26:56, bgp-65003, external, tag 65000
+172.16.2.2/32, ubest/mbest: 2/0
+    *via 10.1.1.9, [20/0], 03:37:17, bgp-65003, external, tag 65000
+    *via 10.2.1.9, [20/0], 03:28:50, bgp-65003, external, tag 65000
+
+leaf3(config)# ping 172.16.1.1
+PING 172.16.1.1 (172.16.1.1): 56 data bytes
+64 bytes from 172.16.1.1: icmp_seq=0 ttl=254 time=15.891 ms
+64 bytes from 172.16.1.1: icmp_seq=1 ttl=254 time=3.176 ms
+64 bytes from 172.16.1.1: icmp_seq=2 ttl=254 time=1.732 ms
+64 bytes from 172.16.1.1: icmp_seq=3 ttl=254 time=2.525 ms
+64 bytes from 172.16.1.1: icmp_seq=4 ttl=254 time=1.781 ms
+
+--- 172.16.1.1 ping statistics ---
+5 packets transmitted, 5 packets received, 0.00% packet loss
+round-trip min/avg/max = 1.732/5.02/15.891 ms
+leaf3(config)# ping 172.16.1.2
+PING 172.16.1.2 (172.16.1.2): 56 data bytes
+64 bytes from 172.16.1.2: icmp_seq=0 ttl=254 time=8.228 ms
+64 bytes from 172.16.1.2: icmp_seq=1 ttl=254 time=3.46 ms
+64 bytes from 172.16.1.2: icmp_seq=2 ttl=254 time=2.499 ms
+64 bytes from 172.16.1.2: icmp_seq=3 ttl=254 time=3.515 ms
+64 bytes from 172.16.1.2: icmp_seq=4 ttl=254 time=1.649 ms
+
+--- 172.16.1.2 ping statistics ---
+5 packets transmitted, 5 packets received, 0.00% packet loss
+round-trip min/avg/max = 1.649/3.87/8.228 ms
+leaf3(config)# ping 172.16.2.1 so
+source             source-interface
+leaf3(config)# ping 172.16.2.1 source-interface lo0
+PING 172.16.2.1 (172.16.2.1): 56 data bytes
+64 bytes from 172.16.2.1: icmp_seq=0 ttl=253 time=6.313 ms
+64 bytes from 172.16.2.1: icmp_seq=1 ttl=253 time=4.103 ms
+64 bytes from 172.16.2.1: icmp_seq=2 ttl=253 time=3.648 ms
+64 bytes from 172.16.2.1: icmp_seq=3 ttl=253 time=3.542 ms
+64 bytes from 172.16.2.1: icmp_seq=4 ttl=253 time=4.254 ms
+
+--- 172.16.2.1 ping statistics ---
+5 packets transmitted, 5 packets received, 0.00% packet loss
+round-trip min/avg/max = 3.542/4.372/6.313 ms
+leaf3(config)# ping 172.16.2.2 source-interface lo0
+PING 172.16.2.2 (172.16.2.2): 56 data bytes
+64 bytes from 172.16.2.2: icmp_seq=0 ttl=253 time=6.504 ms
+64 bytes from 172.16.2.2: icmp_seq=1 ttl=253 time=6.568 ms
+64 bytes from 172.16.2.2: icmp_seq=2 ttl=253 time=4.599 ms
+64 bytes from 172.16.2.2: icmp_seq=3 ttl=253 time=4.28 ms
+64 bytes from 172.16.2.2: icmp_seq=4 ttl=253 time=5.058 ms
+
+--- 172.16.2.2 ping statistics ---
+5 packets transmitted, 5 packets received, 0.00% packet loss
+round-trip min/avg/max = 4.28/5.401/6.568 ms
+leaf3(config)# sh ip bgp nei
+BGP neighbor is 10.1.1.9, remote AS 65000, ebgp link, Peer index 3
+  Inherits peer configuration from peer-template SPINE
+  BGP version 4, remote router ID 172.16.1.1
+  BGP state = Established, up for 03:37:49
+  Using loopback0 as update source for this peer
+  Peer is directly attached, interface Ethernet1/1
+  Last read 00:00:02, hold time = 9, keepalive interval is 3 seconds
+  Last written 0.706477, keepalive timer expiry due 00:00:02
+  Received 4381 messages, 0 notifications, 0 bytes in queue
+  Sent 4361 messages, 0 notifications, 0(0) bytes in queue
+  Connections established 1, dropped 0
+  Last reset by us never, due to No error
+  Last reset by peer never, due to No error
+
+  Neighbor capabilities:
+  Dynamic capability: advertised (mp, refresh, gr) received (mp, refresh, gr)
+  Dynamic capability (old): advertised received
+  Route refresh capability (new): advertised received
+  Route refresh capability (old): advertised received
+  4-Byte AS capability: advertised received
+  Address family IPv4 Unicast: advertised received
+  Graceful Restart capability: advertised received
+
+  Graceful Restart Parameters:
+  Address families advertised to peer:
+    IPv4 Unicast
+  Address families received from peer:
+    IPv4 Unicast
+  Forwarding state preserved by peer for:
+  Restart time advertised to peer: 120 seconds
+  Stale time for routes advertised by peer: 300 seconds
+  Restart time advertised by peer: 120 seconds
+  Extended Next Hop Encoding Capability: advertised received
+  Receive IPv6 next hop encoding Capability for AF:
+    IPv4 Unicast
+
+  Message statistics:
+                              Sent               Rcvd
+  Opens:                         1                  1
+  Notifications:                 0                  0
+  Updates:                      12                 24
+  Keepalives:                 4351               4350
+  Route Refresh:                 1                  4
+  Capability:                    2                  2
+  Total:                      4361               4381
+  Total bytes:               83229              83975
+  Bytes in queue:                0                  0
+
+  For address family: IPv4 Unicast
+  BGP table version 20, neighbor version 20
+  3 accepted paths consume 396 bytes of memory
+  1 sent paths
+  Last End-of-RIB received 03:15:11 after session start
+  Last End-of-RIB sent 03:15:16 after session start
+  First convergence 00:00:01 after session start with 1 routes sent
+
+  Local host: 10.1.1.10, Local port: 44493
+  Foreign host: 10.1.1.9, Foreign port: 179
+  fd = 65
+
+BGP neighbor is 10.2.1.9, remote AS 65000, ebgp link, Peer index 4
+  Inherits peer configuration from peer-template SPINE
+  BGP version 4, remote router ID 172.16.1.2
+  BGP state = Established, up for 03:29:22
+  Using loopback0 as update source for this peer
+  Peer is directly attached, interface Ethernet1/2
+  Last read 00:00:02, hold time = 9, keepalive interval is 3 seconds
+  Last written 0.706856, keepalive timer expiry due 00:00:02
+  Received 4202 messages, 0 notifications, 0 bytes in queue
+  Sent 4191 messages, 0 notifications, 0(0) bytes in queue
+  Connections established 1, dropped 0
+  Last reset by us 03:30:36, due to session closed
+  Last reset by peer never, due to No error
+
+  Neighbor capabilities:
+  Dynamic capability: advertised (mp, refresh, gr) received (mp, refresh, gr)
+  Dynamic capability (old): advertised received
+  Route refresh capability (new): advertised received
+  Route refresh capability (old): advertised received
+  4-Byte AS capability: advertised received
+  Address family IPv4 Unicast: advertised received
+  Graceful Restart capability: advertised received
+
+  Graceful Restart Parameters:
+  Address families advertised to peer:
+    IPv4 Unicast
+  Address families received from peer:
+    IPv4 Unicast
+  Forwarding state preserved by peer for:
+  Restart time advertised to peer: 120 seconds
+  Stale time for routes advertised by peer: 300 seconds
+  Restart time advertised by peer: 120 seconds
+  Extended Next Hop Encoding Capability: advertised received
+  Receive IPv6 next hop encoding Capability for AF:
+    IPv4 Unicast
+
+  Message statistics:
+                              Sent               Rcvd
+  Opens:                         2                  1
+  Notifications:                 0                  0
+  Updates:                       8                 16
+  Keepalives:                 4182               4181
+  Route Refresh:                 1                  2
+  Capability:                    2                  2
+  Total:                      4191               4202
+  Total bytes:               79852              80320
+  Bytes in queue:                0                  0
+
+  For address family: IPv4 Unicast
+  BGP table version 20, neighbor version 20
+  3 accepted paths consume 396 bytes of memory
+  1 sent paths
+  Last End-of-RIB received 03:07:07 after session start
+  Last End-of-RIB sent 03:07:12 after session start
+  First convergence 00:00:01 after session start with 1 routes sent
+
+  Local host: 10.2.1.10, Local port: 47522
+  Foreign host: 10.2.1.9, Foreign port: 179
+  fd = 67
