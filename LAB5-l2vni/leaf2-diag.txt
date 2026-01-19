@@ -1,0 +1,65 @@
+leaf2(config)# sh nve peers
+Interface Peer-IP          State LearnType Uptime   Router-Mac
+--------- ---------------  ----- --------- -------- -----------------
+nve1      172.17.2.1       Up    CP        00:18:14 n/a
+nve1      172.17.2.3       Up    CP        00:21:34 n/a
+!
+!
+leaf2(config)# sh nve vni
+Codes: CP - Control Plane        DP - Data Plane
+       UC - Unconfigured         SA - Suppress ARP
+       SU - Suppress Unknown Unicast
+
+Interface VNI      Multicast-group   State Mode Type [BD/VRF]      Flags
+--------- -------- ----------------- ----- ---- ------------------ -----
+nve1      10010    UnicastBGP        Up    CP   L2 [10]
+
+!
+!
+
+leaf2(config)# sh bgp l2vpn evpn route-type 2
+BGP routing table information for VRF default, address family L2VPN EVPN
+Route Distinguisher: 172.16.2.2:32777    (L2VNI 10010)
+BGP routing table entry for [2]:[0]:[0]:[48]:[0050.7966.6808]:[0]:[0.0.0.0]/216,
+ version 83
+Paths: (1 available, best #1)
+Flags: (0x000212) (high32 00000000) on xmit-list, is in l2rib/evpn, is not in HW
+Multipath: eBGP
+
+  Advertised path-id 1
+  Path type: external, path is valid, is best path, in rib
+             Imported from 172.16.2.3:32777:[2]:[0]:[0]:[48]:[0050.7966.6808]:[0
+]:[0.0.0.0]/216
+  AS-Path: 65000 65003 , path sourced external to AS
+    172.17.2.3 (metric 21) from 172.16.1.1 (172.16.1.1)
+      Origin IGP, MED not set, localpref 100, weight 0
+      Received label 10010
+      Extcommunity: RT:65002:10010 ENCAP:8
+
+  Path-id 1 not advertised to any peer
+
+Route Distinguisher: 172.16.2.3:32777
+BGP routing table entry for [2]:[0]:[0]:[48]:[0050.7966.6808]:[0]:[0.0.0.0]/216,
+ version 84
+Paths: (2 available, best #2)
+Flags: (0x000202) (high32 00000000) on xmit-list, is not in l2rib/evpn, is not i
+n HW
+Multipath: eBGP
+
+  Path type: external, path is valid, not best reason: newer EBGP path
+  AS-Path: 65000 65003 , path sourced external to AS
+    172.17.2.3 (metric 21) from 172.16.1.2 (172.16.1.2)
+      Origin IGP, MED not set, localpref 100, weight 0
+      Received label 10010
+      Extcommunity: RT:65002:10010 ENCAP:8
+
+  Advertised path-id 1
+  Path type: external, path is valid, is best path
+             Imported to 1 destination(s)
+  AS-Path: 65000 65003 , path sourced external to AS
+    172.17.2.3 (metric 21) from 172.16.1.1 (172.16.1.1)
+      Origin IGP, MED not set, localpref 100, weight 0
+      Received label 10010
+      Extcommunity: RT:65002:10010 ENCAP:8
+
+  Path-id 1 not advertised to any peer

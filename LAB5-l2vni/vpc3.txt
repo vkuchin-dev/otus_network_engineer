@@ -1,0 +1,29 @@
+VPCS> sh arp
+
+00:50:79:66:68:07  10.10.10.2 expires in 8 seconds
+00:50:79:66:68:06  10.10.10.1 expires in 16 seconds
+!
+
+VPCS> ping 10.10.10.3
+
+10.10.10.3 icmp_seq=1 ttl=64 time=0.001 ms
+10.10.10.3 icmp_seq=2 ttl=64 time=0.001 ms
+10.10.10.3 icmp_seq=3 ttl=64 time=0.001 ms
+10.10.10.3 icmp_seq=4 ttl=64 time=0.001 ms
+10.10.10.3 icmp_seq=5 ttl=64 time=0.001 ms
+
+VPCS> ping 10.10.10.1
+
+84 bytes from 10.10.10.1 icmp_seq=1 ttl=64 time=13.184 ms
+84 bytes from 10.10.10.1 icmp_seq=2 ttl=64 time=15.093 ms
+84 bytes from 10.10.10.1 icmp_seq=3 ttl=64 time=10.927 ms
+84 bytes from 10.10.10.1 icmp_seq=4 ttl=64 time=10.540 ms
+84 bytes from 10.10.10.1 icmp_seq=5 ttl=64 time=10.005 ms
+
+VPCS> ping 10.10.10.2
+
+84 bytes from 10.10.10.2 icmp_seq=1 ttl=64 time=8.837 ms
+84 bytes from 10.10.10.2 icmp_seq=2 ttl=64 time=11.200 ms
+84 bytes from 10.10.10.2 icmp_seq=3 ttl=64 time=9.446 ms
+84 bytes from 10.10.10.2 icmp_seq=4 ttl=64 time=10.232 ms
+84 bytes from 10.10.10.2 icmp_seq=5 ttl=64 time=15.316 ms
