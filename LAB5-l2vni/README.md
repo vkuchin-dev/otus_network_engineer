@@ -33,7 +33,7 @@
 
 
 *Конфигурация оборудования:*  
-[Конфигурацию leaf1 можно увидеть здесь](../LAB4-bgp/leaf1-bgp-cfg.txt)  
+[Конфигурацию leaf1 можно увидеть здесь](../LAB5-l2vni/leaf1-cfg.txt)  
 [Конфигурацию leaf2 можно увидеть здесь](../LAB4-bgp/leaf2-bgp-cfg.txt)  
 [Конфигурацию leaf3 можно увидеть здесь](../LAB4-bgp/leaf3-bgp-cfg.txt)  
 [Конфигурацию spine1 можно увидеть здесь](../LAB4-bgp/spine1-bgp-cfg.txt)  
