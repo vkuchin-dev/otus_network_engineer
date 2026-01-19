@@ -28,21 +28,33 @@
 Таблица loopback адресов (lo1 for nve):
 |      Leaf1   | Leaf2        |     leaf3    |
 |:------------:|:------------:|:------------:|
-| 172.17.2.1/32 | 172.17.2.2/32 | $172.17.2.3/32 |
+| 172.17.2.1/32 | 172.17.2.2/32 | 172.17.2.3/32 |
+
+
+Таблица mac/ip адресов PC :
+|      PC1     |   PC2        |     PC3    |
+|:------------:|:------------:|:------------:|
+| 10.10.10.1/24 | 10.10.10.2/24 | 10.10.10.3/24 |
+| 00:50:79:66:68:06 | 00:50:79:66:68:07 | 00:50:79:66:68:08 |
 
 
 
 *Конфигурация оборудования:*  
 [Конфигурацию leaf1 можно увидеть здесь](../LAB5-l2vni/leaf1-cfg.txt)  
-[Конфигурацию leaf2 можно увидеть здесь](../LAB4-bgp/leaf2-bgp-cfg.txt)  
-[Конфигурацию leaf3 можно увидеть здесь](../LAB4-bgp/leaf3-bgp-cfg.txt)  
-[Конфигурацию spine1 можно увидеть здесь](../LAB4-bgp/spine1-bgp-cfg.txt)  
-[Конфигурацию spine2 можно увидеть здесь](../LAB4-bgp/spine2-bgp-cfg.txt)  
+[Конфигурацию leaf2 можно увидеть здесь](../LAB5-l2vni/leaf2-cfg.txt)  
+[Конфигурацию leaf3 можно увидеть здесь](../LAB5-l2vni/leaf3-cfg.txt)  
+[Конфигурацию spine1 можно увидеть здесь](../LAB5-l2vni/spine1-cfg.txt)  
+[Конфигурацию spine2 можно увидеть здесь](../LAB5-l2vni/spine2-cfg.txt)  
 
-*Диагностика соседства bgp, топология, таблица маршрутизации bgp и доступность loopback-ов через ebgp:*  
-[spine1](../LAB4-bgp/spine1-bgp-diag.txt)  
-[spine2](../LAB4-bgp/spine2-bgp-diag.txt)  
-[leaf1](../LAB4-bgp/leaf1-bgp-diag.txt)  
-[leaf2](../LAB4-bgp/leaf2-bgp-diag.txt)  
-[leaf3](../LAB4-bgp/leaf3-bgp-diag.txt)
+*Диагностика соседства nve, таблица маршрутизации bgp l2vpn type2 (мак адреса pc):*  
+[leaf1](../LAB5-l2vni/leaf1-diag.txt)  
+[leaf2](../LAB5-l2vni/leaf2-diag.txt)  
+[leaf3](../LAB5-l2vni/leaf3-diag.txt)
+
+*Диагностика доступности хостов (arp, ping):*  
+[PC1](../LAB5-l2vni/vpc1.txt)  
+[PC2](../LAB5-l2vni/vpc2.txt)  
+[PC3](../LAB5-l2vni/vpc3.txt)
+
+P.S. Диагностику соседства UNDER OSPF / OVERLAY: BGP L2vpn evpn nei - не стал приводить, там все хорошо, соседство установлено + маршруты type2 присутствуют в выводе.
 
