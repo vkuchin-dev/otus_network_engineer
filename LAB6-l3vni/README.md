@@ -40,21 +40,21 @@
 
 
 *Конфигурация оборудования:*  
-[Конфигурацию leaf1 можно увидеть здесь](../LAB5-l2vni/leaf1-cfg.txt)  
-[Конфигурацию leaf2 можно увидеть здесь](../LAB5-l2vni/leaf2-cfg.txt)  
-[Конфигурацию leaf3 можно увидеть здесь](../LAB5-l2vni/leaf3-cfg.txt)  
+[Конфигурацию leaf1 можно увидеть здесь](../LAB6-l3vni/leaf1-cfg.txt)  
+[Конфигурацию leaf2 можно увидеть здесь](../LAB6-l3vni/leaf2-cfg.txt)  
+[Конфигурацию leaf3 можно увидеть здесь](../LAB6-l3vni/leaf3-cfg.txt)  
 [Конфигурацию spine1 можно увидеть здесь](../LAB5-l2vni/spine1-cfg.txt)  
 [Конфигурацию spine2 можно увидеть здесь](../LAB5-l2vni/spine2-cfg.txt)  
 
 *Диагностика соседства nve, таблица маршрутизации bgp l2vpn type2 (мак адреса pc):*  
-[leaf1](../LAB5-l2vni/leaf1-diag.txt)  
-[leaf2](../LAB5-l2vni/leaf2-diag.txt)  
-[leaf3](../LAB5-l2vni/leaf3-diag.txt)
+[leaf1](../LAB6-l3vni/leaf1-diag.txt)  
+[leaf2](../LAB6-l3vni/leaf2-diag.txt)  
+[leaf3](../LAB6-l3vni/leaf3-diag.txt)
 
 *Диагностика доступности хостов (arp, ping):*  
-[PC1](../LAB5-l2vni/vpc1.txt)  
-[PC2](../LAB5-l2vni/vpc2.txt)  
-[PC3](../LAB5-l2vni/vpc3.txt)
+[PC1](../LAB6-l3vni/vpc1.txt)  
+[PC2](../LAB6-l3vni/vpc2.txt)  
+[PC3](../LAB6-l3vni/vpc3.txt)
 
-P.S. Диагностику соседства | UNDER OSPF / OVERLAY BGP L2vpn evpn nei | - не стал приводить, там все хорошо, соседство установлено + маршруты type2 присутствуют в выводе.
+
 
