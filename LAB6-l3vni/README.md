@@ -52,9 +52,9 @@
 [leaf3](../LAB6-l3vni/leaf3-diag.txt)
 
 *Диагностика доступности хостов (arp, ping):*  
-[PC1](../LAB6-l3vni/vpc1.txt)  
-[PC2](../LAB6-l3vni/vpc2.txt)  
-[PC3](../LAB6-l3vni/vpc3.txt)
+[PC1](../LAB6-l3vni/pc1.txt)  
+[PC2](../LAB6-l3vni/pc2.txt)  
+[PC3](../LAB6-l3vni/pc3.txt)
 
 
 
