@@ -46,12 +46,12 @@
 [Конфигурацию spine1 можно увидеть здесь](../LAB5-l2vni/spine1-cfg.txt)  
 [Конфигурацию spine2 можно увидеть здесь](../LAB5-l2vni/spine2-cfg.txt)  
 
-*Диагностика соседства nve, таблица маршрутизации bgp l2vpn type2 (мак адреса pc):*  
+*Диагностика соседства nve, таблицы маршрутизации:*  
 [leaf1](../LAB6-l3vni/leaf1-diag.txt)  
 [leaf2](../LAB6-l3vni/leaf2-diag.txt)  
 [leaf3](../LAB6-l3vni/leaf3-diag.txt)
 
-*Диагностика доступности хостов (arp, ping):*  
+*Диагностика доступности хостов (ping):*  
 [PC1](../LAB6-l3vni/pc1.txt)  
 [PC2](../LAB6-l3vni/pc2.txt)  
 [PC3](../LAB6-l3vni/pc3.txt)
