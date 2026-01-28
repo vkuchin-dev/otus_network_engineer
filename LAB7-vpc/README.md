@@ -42,7 +42,9 @@
 
 *Конфигурация оборудования:*  
 [Конфигурацию leaf1 можно увидеть здесь](../LAB7-vpc/leaf1-cfg.txt)  
-[Конфигурацию leaf2 можно увидеть здесь](../LAB7-vpc/leaf2-cfg.txt)  
+[Конфигурацию leaf2 можно увидеть здесь](../LAB7-vpc/leaf2-cfg.txt)
+[Конфигурацию sw-access можно увидеть здесь](../LAB7-vpc/sw-access-cfg.txt)
+
 [Конфигурацию leaf3 можно увидеть здесь](../LAB6-l3vni/leaf3-cfg.txt)  
 [Конфигурацию spine1 можно увидеть здесь](../LAB5-l2vni/spine1-cfg.txt)  
 [Конфигурацию spine2 можно увидеть здесь](../LAB5-l2vni/spine2-cfg.txt)  
