@@ -38,8 +38,5 @@ Please check "show vpc consistency-parameters vpc <vpc-num>" for the
 consistency reason of down vpc and for type-2 consistency reasons for
 any vpc.
 
-leaf1(config)# sh nve peers
-Interface Peer-IP          State LearnType Uptime   Router-Mac
---------- ---------------  ----- --------- -------- -----------------
-nve1      172.17.2.3       Up    CP        00:40:27 n/a
+
 
