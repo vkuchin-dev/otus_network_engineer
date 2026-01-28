@@ -8,7 +8,7 @@
 4. Диагностика результатов: vpc собралсся, статус vpc -консистентный, PO6 -поднят/ поданы нужные влан, есть связанность хостов pc5 и pc3.
 5. Фиксация результатов.
 
-![Схема подключения следующая](/LAB6-l3vni/design.jpg)
+![Схема подключения следующая](/LAB6-l3vni/design-vpc.jpg)
 
 Таблица линковых адресов:
 
@@ -41,21 +41,22 @@
 
 
 *Конфигурация оборудования:*  
-[Конфигурацию leaf1 можно увидеть здесь](../LAB6-l3vni/leaf1-cfg.txt)  
-[Конфигурацию leaf2 можно увидеть здесь](../LAB6-l3vni/leaf2-cfg.txt)  
+[Конфигурацию leaf1 можно увидеть здесь](../LAB7-vpc/leaf1-cfg.txt)  
+[Конфигурацию leaf2 можно увидеть здесь](../LAB7-vpc/leaf2-cfg.txt)  
 [Конфигурацию leaf3 можно увидеть здесь](../LAB6-l3vni/leaf3-cfg.txt)  
 [Конфигурацию spine1 можно увидеть здесь](../LAB5-l2vni/spine1-cfg.txt)  
 [Конфигурацию spine2 можно увидеть здесь](../LAB5-l2vni/spine2-cfg.txt)  
 
-*Диагностика соседства nve, таблицы маршрутизации:*  
-[leaf1](../LAB6-l3vni/leaf1-diag.txt)  
-[leaf2](../LAB6-l3vni/leaf2-diag.txt)  
-[leaf3](../LAB6-l3vni/leaf3-diag.txt)
+*Диагностика консистентности VPC, одно соседство nve с лиф3 :*  
+[leaf1](../LAB7-vpc/leaf1-diag.txt)  
+[leaf2](../LAB7-vpc/leaf2-diag.txt)  
+
+*Диагностика состояний PO1 в сторону лифов на sw-access:*
+[sw-access](../LAB7-vpc/sw-access-diag.txt)
 
 *Диагностика доступности хостов (ping):*  
-[PC1](../LAB6-l3vni/pc1.txt)  
-[PC2](../LAB6-l3vni/pc2.txt)  
-[PC3](../LAB6-l3vni/pc3.txt)
+[PC5](../LAB7-vpc/pc5.txt)  
+[PC3](../LAB7-vpc/pc3.txt)  
 
 
 
