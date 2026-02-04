@@ -1,0 +1,223 @@
+leaf3(config)# sh run
+
+!Command: show running-config
+!Time: Tue Feb  3 15:59:17 2026
+
+version 7.0(3)I7(4)
+switchname leaf3
+vdc leaf3 id 1
+  limit-resource vlan minimum 16 maximum 4094
+  limit-resource vrf minimum 2 maximum 4096
+  limit-resource port-channel minimum 0 maximum 511
+  limit-resource u4route-mem minimum 248 maximum 248
+  limit-resource u6route-mem minimum 96 maximum 96
+  limit-resource m4route-mem minimum 58 maximum 58
+  limit-resource m6route-mem minimum 8 maximum 8
+
+feature telnet
+nv overlay evpn
+feature ospf
+feature bgp
+feature isis
+feature fabric forwarding
+feature interface-vlan
+feature vn-segment-vlan-based
+feature nv overlay
+
+username admin password 5 $5$Kdphnira$NOjNi7MPaFfvUjZuW.nIPkUCAJSJayMeLJax4Jr04u
+5  role network-admin
+username vkuchin password 5 $5$QRpqiiht$JDv4UZnkda4gevISDXRhGUqkWPG37THE1lSDEypH
+XeA  role network-admin
+ip domain-lookup
+copp profile strict
+snmp-server user admin network-admin auth md5 0x78eeae1e878cd8decd35fd1c06c313c4
+ priv 0x78eeae1e878cd8decd35fd1c06c313c4 localizedkey
+snmp-server user vkuchin network-admin auth md5 0x9719a4b0c94da40d92db95bb3548c3
+a7 priv 0x9719a4b0c94da40d92db95bb3548c3a7 localizedkey
+rmon event 1 description FATAL(1) owner PMON@FATAL
+rmon event 2 description CRITICAL(2) owner PMON@CRITICAL
+rmon event 3 description ERROR(3) owner PMON@ERROR
+rmon event 4 description WARNING(4) owner PMON@WARNING
+rmon event 5 description INFORMATION(5) owner PMON@INFO
+
+fabric forwarding anycast-gateway-mac 0002.0002.0002
+vlan 1,10,20,30,99-100
+vlan 10
+  name PC1
+  vn-segment 10010
+vlan 20
+  name PC2
+  vn-segment 10020
+vlan 30
+  name PC4
+  vn-segment 10030
+vlan 99
+  name L3VNI
+  vn-segment 10099
+vlan 100
+  name L3VNI2
+  vn-segment 10100
+
+ip prefix-list DIRECT-OTUS2 seq 10 permit 10.10.30.0/24
+ip prefix-list DIRECT-OTUS2 seq 20 permit 172.18.2.3/32
+route-map DIRECT-OTUS2 permit 10
+  match ip address prefix-list DIRECT-OTUS2
+route-map NH permit 10
+  set ip next-hop unchanged
+vrf context OTUS
+  vni 10099
+  rd auto
+  address-family ipv4 unicast
+    route-target both auto
+    route-target both auto evpn
+vrf context OTUS2
+  vni 10100
+  rd auto
+  address-family ipv4 unicast
+    route-target both auto
+    route-target both auto evpn
+vrf context management
+  ip route 0.0.0.0/0 10.0.255.254
+
+
+interface Vlan1
+
+interface Vlan10
+  description "PC1-PC3"
+  no shutdown
+  vrf member OTUS
+  no ip redirects
+  ip address 10.10.10.254/24
+  no ipv6 redirects
+  fabric forwarding mode anycast-gateway
+
+interface Vlan30
+  description "PC4 vrf OTUS2"
+  no shutdown
+  vrf member OTUS2
+  no ip redirects
+  ip address 10.10.30.254/24
+  no ipv6 redirects
+  fabric forwarding mode anycast-gateway
+
+interface Vlan99
+  no shutdown
+  vrf member OTUS
+  no ip redirects
+  ip forward
+  no ipv6 redirects
+
+interface Vlan100
+  no shutdown
+  vrf member OTUS2
+  no ip redirects
+  ip forward
+  no ipv6 redirects
+
+interface nve1
+  no shutdown
+  host-reachability protocol bgp
+  source-interface loopback1
+  member vni 10010
+    ingress-replication protocol bgp
+  member vni 10020
+    ingress-replication protocol bgp
+  member vni 10030
+    ingress-replication protocol bgp
+  member vni 10099 associate-vrf
+  member vni 10100 associate-vrf
+
+interface Ethernet1/1
+  description "To spine1"
+  no switchport
+  mtu 9000
+  medium p2p
+  ip address 10.1.1.10/30
+  ip ospf cost 10
+  ip router ospf UNDERLAY area 0.0.0.0
+  no shutdown
+
+interface Ethernet1/2
+  description "To spine2"
+  no switchport
+  mtu 9000
+  medium p2p
+  ip address 10.2.1.10/30
+  ip ospf cost 10
+  ip router ospf UNDERLAY area 0.0.0.0
+  no shutdown
+
+interface mgmt0
+  vrf member management
+  ip address 10.0.255.3/24
+
+interface loopback0
+  description "For UNDERLAY"
+  ip address 172.16.2.3/32
+  ip router ospf UNDERLAY area 0.0.0.0
+
+interface loopback1
+  description "For nve"
+  ip address 172.17.2.3/32
+  ip router ospf UNDERLAY area 0.0.0.0
+
+interface loopback2
+  vrf member OTUS2
+  ip address 172.18.2.3/32
+line console
+line vty
+boot nxos bootflash:/nxos.7.0.3.I7.4.bin
+router ospf UNDERLAY
+  router-id 172.16.2.3
+router bgp 65003
+  router-id 172.16.2.3
+  timers bgp 3 9
+  bestpath as-path multipath-relax
+  reconnect-interval 10
+  log-neighbor-changes
+  address-family ipv4 unicast
+    maximum-paths 2
+  address-family l2vpn evpn
+    maximum-paths 10
+    retain route-target all
+    advertise-pip
+  template peer SPINE
+    remote-as 65000
+    update-source loopback0
+    ebgp-multihop 2
+    timers 3 9
+    address-family ipv4 unicast
+    address-family l2vpn evpn
+      send-community
+      send-community extended
+      rewrite-evpn-rt-asn
+  neighbor 172.16.1.1
+    inherit peer SPINE
+  neighbor 172.16.1.2
+    inherit peer SPINE
+  vrf OTUS
+    address-family ipv4 unicast
+      network 10.10.10.0/24
+      advertise l2vpn evpn
+      maximum-paths 2
+  vrf OTUS2
+    address-family ipv4 unicast
+      advertise l2vpn evpn
+      redistribute direct route-map DIRECT-OTUS2
+      maximum-paths 2
+evpn
+  vni 10010 l2
+    rd auto
+    route-target import auto
+    route-target export auto
+  vni 10020 l2
+    rd auto
+    route-target import auto
+    route-target export auto
+  vni 10030 l2
+    rd auto
+    route-target import auto
+    route-target export auto
+
+
+

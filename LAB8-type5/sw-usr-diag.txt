@@ -1,0 +1,48 @@
+sw-po(config)# sh port-channel summary
+Flags:  D - Down        P - Up in port-channel (members)
+        I - Individual  H - Hot-standby (LACP only)
+        s - Suspended   r - Module-removed
+        b - BFD Session Wait
+        S - Switched    R - Routed
+        U - Up (port-channel)
+        p - Up in delay-lacp mode (member)
+        M - Not in use. Min-links not met
+--------------------------------------------------------------------------------
+Group Port-       Type     Protocol  Member Ports
+      Channel
+--------------------------------------------------------------------------------
+1     Po1(SU)     Eth      LACP      Eth1/1(P)    Eth1/2(P)
+
+
+sw-po(config)# sh ip bgp summary
+BGP summary information for VRF default, address family IPv4 Unicast
+BGP router identifier 172.20.0.5, local AS number 65005
+BGP table version is 51, IPv4 Unicast config peers 4, capable peers 4
+5 network entries and 9 paths using 1708 bytes of memory
+BGP attribute entries [7/1120], BGP AS path entries [4/40]
+BGP community entries [0/0], BGP clusterlist entries [0/0]
+
+Neighbor        V    AS MsgRcvd MsgSent   TblVer  InQ OutQ Up/Down  State/PfxRcd
+10.3.1.1        4 65001    7169    7185       51    0    0 05:57:55 2
+10.3.1.2        4 65002    7182    7169       51    0    0 05:58:46 2
+10.3.2.1        4 65001    3917    3910       51    0    0 03:05:03 2
+10.3.2.2        4 65002    3924    3916       51    0    0 03:05:15 2
+sw-po(config)# sh ip route bgp
+IP Route Table for VRF "default"
+'*' denotes best ucast next-hop
+'**' denotes best mcast next-hop
+'[x/y]' denotes [preference/metric]
+'%<string>' in via output denotes VRF <string>
+
+10.10.10.0/24, ubest/mbest: 2/0
+    *via 10.3.1.1, [20/0], 00:28:26, bgp-65005, external, tag 65001
+    *via 10.3.1.2, [20/0], 00:17:08, bgp-65005, external, tag 65002
+10.10.20.0/24, ubest/mbest: 1/0
+    *via 10.3.1.1, [20/0], 00:23:48, bgp-65005, external, tag 65001
+10.10.30.0/24, ubest/mbest: 2/0
+    *via 10.3.2.1, [20/0], 00:28:26, bgp-65005, external, tag 65001
+    *via 10.3.2.2, [20/0], 00:17:08, bgp-65005, external, tag 65002
+172.18.2.3/32, ubest/mbest: 2/0
+    *via 10.3.2.1, [20/0], 00:28:26, bgp-65005, external, tag 65001
+    *via 10.3.2.2, [20/0], 00:17:08, bgp-65005, external, tag 65002
+
