@@ -37,7 +37,7 @@
 
 
 Таблица адресов, расположенных в vrf OTUS/OTUS2 и анонсируемых в сторону внешнего устройства sw-usr :
-| leaf1 vrf OTUS | leaf2 vrf OTUS | leaf3 vrf OTUS2 | leaf3 vrf OTUS2 | leaf3 vrf OTUS2 |  
+| leaf1 vrf OTUS | leaf2 vrf OTUS | leaf3 vrf OTUS | leaf3 vrf OTUS2 | leaf3 vrf OTUS2 |  
 |:------------:|:--------------:|:-------------:|:------------:|:------------:|  
 | 10.10.20.0/24 | 10.10.20.0/24 |10.10.10.0/24 | 10.10.30.0/24 | 172.18.2.3/32 |  
 |    vlan 20    |    vlan20     |   vlan 10    |   vlan 30     |     lo2       |
