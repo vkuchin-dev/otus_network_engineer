@@ -1,0 +1,51 @@
+leaf1(config)# sh ip route vrf OTUS
+IP Route Table for VRF "OTUS"
+'*' denotes best ucast next-hop
+'**' denotes best mcast next-hop
+'[x/y]' denotes [preference/metric]
+'%<string>' in via output denotes VRF <string>
+
+10.3.1.0/29, ubest/mbest: 1/0, attached
+    *via 10.3.1.1, Vlan90, [0/0], 06:13:20, direct
+10.3.1.1/32, ubest/mbest: 1/0, attached
+    *via 10.3.1.1, Vlan90, [0/0], 06:13:20, local
+10.10.10.0/24, ubest/mbest: 1/0
+    *via 172.17.2.3%default, [20/0], 06:13:50, bgp-65001, external, tag 65000 (e
+vpn) segid: 10099 tunnelid: 0xac110203 encap: VXLAN
+
+10.10.20.0/24, ubest/mbest: 1/0, attached
+    *via 10.10.20.254, Vlan20, [0/0], 06:13:51, direct
+10.10.20.254/32, ubest/mbest: 1/0, attached
+    *via 10.10.20.254, Vlan20, [0/0], 06:13:51, local
+10.10.30.0/24, ubest/mbest: 1/0
+    *via 10.3.1.5, [20/0], 00:01:22, bgp-65001, external, tag 65005
+172.18.2.3/32, ubest/mbest: 1/0
+    *via 10.3.1.5, [20/0], 00:01:22, bgp-65001, external, tag 65005
+172.20.0.5/32, ubest/mbest: 1/0
+    *via 10.3.1.5, [20/0], 00:01:22, bgp-65001, external, tag 65005
+
+leaf1(config)# sh ip route vrf OTUS2
+IP Route Table for VRF "OTUS2"
+'*' denotes best ucast next-hop
+'**' denotes best mcast next-hop
+'[x/y]' denotes [preference/metric]
+'%<string>' in via output denotes VRF <string>
+
+10.3.2.0/29, ubest/mbest: 1/0, attached
+    *via 10.3.2.1, Vlan91, [0/0], 06:13:36, direct
+10.3.2.1/32, ubest/mbest: 1/0, attached
+    *via 10.3.2.1, Vlan91, [0/0], 06:13:36, local
+10.10.20.0/24, ubest/mbest: 1/0
+    *via 172.17.2.2%default, [20/0], 00:01:43, bgp-65001, external, tag 65000 (e
+vpn) segid: 10100 tunnelid: 0xac110202 encap: VXLAN
+
+10.10.30.0/24, ubest/mbest: 1/0
+    *via 172.17.2.3%default, [20/0], 06:14:06, bgp-65001, external, tag 65000 (e
+vpn) segid: 10100 tunnelid: 0xac110203 encap: VXLAN
+
+172.18.2.3/32, ubest/mbest: 1/0
+    *via 172.17.2.3%default, [20/0], 06:14:06, bgp-65001, external, tag 65000 (e
+vpn) segid: 10100 tunnelid: 0xac110203 encap: VXLAN
+
+172.20.0.5/32, ubest/mbest: 1/0
+    *via 10.3.2.5, [20/0], 00:28:46, bgp-65001, external, tag 65005
