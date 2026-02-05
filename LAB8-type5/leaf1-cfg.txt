@@ -262,6 +262,7 @@ router bgp 65001
         as-override
   vrf OTUS2
     address-family ipv4 unicast
+      advertise l2vpn evpn
       maximum-paths 2
     neighbor 10.3.2.5
       remote-as 65005
@@ -282,5 +283,6 @@ evpn
     rd auto
     route-target import auto
     route-target export auto
+
 
 
