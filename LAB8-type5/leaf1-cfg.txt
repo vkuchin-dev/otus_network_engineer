@@ -259,7 +259,7 @@ router bgp 65001
       update-source Vlan90
       ebgp-multihop 2
       address-family ipv4 unicast
-        as-override
+        allowas-in 1
   vrf OTUS2
     address-family ipv4 unicast
       advertise l2vpn evpn
@@ -269,7 +269,7 @@ router bgp 65001
       update-source Vlan91
       ebgp-multihop 2
       address-family ipv4 unicast
-        as-override
+        allowas-in 1
 evpn
   vni 10010 l2
     rd auto
