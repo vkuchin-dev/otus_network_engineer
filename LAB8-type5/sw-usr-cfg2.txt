@@ -1,0 +1,118 @@
+!Command: show running-config
+!Time: Mon Feb  9 12:57:24 2026
+
+version 7.0(3)I7(4)
+hostname sw-po
+vdc sw-po id 1
+  limit-resource vlan minimum 16 maximum 4094
+  limit-resource vrf minimum 2 maximum 4096
+  limit-resource port-channel minimum 0 maximum 511
+  limit-resource u4route-mem minimum 248 maximum 248
+  limit-resource u6route-mem minimum 96 maximum 96
+  limit-resource m4route-mem minimum 58 maximum 58
+  limit-resource m6route-mem minimum 8 maximum 8
+
+feature bgp
+feature interface-vlan
+feature lacp
+
+no password strength-check
+username admin password 5 $5$thxxtVLU$5MkzqdH6IoGkZfwzjFGYXO1z2eUe3AESXNdC5T8zYB
+C  role network-admin
+ip domain-lookup
+copp profile strict
+snmp-server user admin network-admin auth md5 0x8d5222f21f128a12140add265b9852f6
+ priv 0x8d5222f21f128a12140add265b9852f6 localizedkey
+snmp-server user vkuchin network-admin auth md5 0x72d8c150059c5b1e4b0dbbee579279
+bf priv 0x72d8c150059c5b1e4b0dbbee579279bf localizedkey
+rmon event 1 description FATAL(1) owner PMON@FATAL
+rmon event 2 description CRITICAL(2) owner PMON@CRITICAL
+rmon event 3 description ERROR(3) owner PMON@ERROR
+rmon event 4 description WARNING(4) owner PMON@WARNING
+rmon event 5 description INFORMATION(5) owner PMON@INFO
+
+ip route 10.10.0.0/16 Null0
+vlan 1,10,20,90-91
+vlan 10
+  name PC1
+vlan 20
+  name PC2
+vlan 90
+  name BGP-VRF
+vlan 91
+  name BGP-VRF2
+
+ip prefix-list STATIC-DEF seq 10 permit 10.10.0.0/16
+route-map STATIC-DEF permit 10
+  match ip address prefix-list STATIC-DEF
+vrf context management
+
+
+interface Vlan1
+
+interface Vlan90
+  description "BGP PEERING VRF1"
+  no shutdown
+  no ip redirects
+  ip address 10.3.1.5/29
+
+interface Vlan91
+  description "BGP PEERING VRF2"
+  no shutdown
+  no ip redirects
+  ip address 10.3.2.5/29
+
+interface port-channel1
+  description "PO to leaf1-2"
+  switchport mode trunk
+  switchport trunk allowed vlan 90-91
+
+interface Ethernet1/1
+  description "PO1 to leaf1"
+  switchport mode trunk
+  switchport trunk allowed vlan 90-91
+  channel-group 1 mode active
+
+interface Ethernet1/2
+  description "PO1 to leaf2"
+  switchport mode trunk
+  switchport trunk allowed vlan 90-91
+  channel-group 1 mode active
+
+interface loopback0
+  ip address 172.20.0.5/32
+line console
+line vty
+boot nxos bootflash:/nxos.7.0.3.I7.4.bin
+router bgp 65005
+  router-id 172.20.0.5
+  timers bgp 3 9
+  bestpath as-path multipath-relax
+  reconnect-interval 10
+  log-neighbor-changes
+  address-family ipv4 unicast
+    network 172.20.0.5/32
+    redistribute static route-map STATIC-DEF
+    maximum-paths 4
+  neighbor 10.3.1.1
+    remote-as 65011
+    update-source Vlan90
+    ebgp-multihop 2
+    address-family ipv4 unicast
+  neighbor 10.3.1.2
+    remote-as 65012
+    update-source Vlan90
+    ebgp-multihop 2
+    address-family ipv4 unicast
+  neighbor 10.3.2.1
+    remote-as 65011
+    update-source Vlan91
+    ebgp-multihop 2
+    address-family ipv4 unicast
+  neighbor 10.3.2.2
+    remote-as 65012
+    update-source Vlan91
+    ebgp-multihop 2
+    address-family ipv4 unicast
+
+
