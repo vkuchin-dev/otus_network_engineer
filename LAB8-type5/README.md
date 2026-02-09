@@ -80,8 +80,8 @@
 [leaf3](../LAB8-type5/leaf3-diag.txt)
 
 *Смежная доступность хостов из vrf-OTUS в vrf OTUS2 и наоборот:*  
-[PC3](../LAB8-type5/pc3.txt)  
-[PC4](../LAB8-type5/pc4.txt)
+[PC3 vrf-OTUS](../LAB8-type5/pc3.txt)  
+[PC4 vrf-OTUS2](../LAB8-type5/pc4.txt)
 
 
 
