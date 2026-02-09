@@ -1,0 +1,19 @@
+VPCS> show ip
+
+NAME        : VPCS[1]
+IP/MASK     : 10.10.30.1/24
+GATEWAY     : 10.10.30.254
+DNS         :
+MAC         : 00:50:79:66:68:09
+LPORT       : 20000
+RHOST:PORT  : 127.0.0.1:30000
+MTU         : 1500
+
+VPCS> ping 10.10.10.3
+
+84 bytes from 10.10.10.3 icmp_seq=1 ttl=59 time=37.410 ms
+84 bytes from 10.10.10.3 icmp_seq=2 ttl=59 time=29.127 ms
+84 bytes from 10.10.10.3 icmp_seq=3 ttl=59 time=30.782 ms
+84 bytes from 10.10.10.3 icmp_seq=4 ttl=59 time=31.572 ms
+84 bytes from 10.10.10.3 icmp_seq=5 ttl=59 time=32.563 ms
+
