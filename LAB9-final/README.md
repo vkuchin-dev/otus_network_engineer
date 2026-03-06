@@ -92,7 +92,7 @@
 [Конфигурацию leaf1-1 можно увидеть здесь](../LAB9-final/leaf1-1-cfg.txt)  
 [Конфигурацию leaf1-2 можно увидеть здесь](../LAB9-final/leaf1-2-cfg.txt)  
 [Конфигурацию leaf2-1 можно увидеть здесь](../LAB9-final/leaf2-1-cfg.txt)    
-[Конфигурацию leaf2-2 можно увидеть здесь](../LAB8-type5/leaf2-2-cfg.txt)  
+[Конфигурацию leaf2-2 можно увидеть здесь](../LAB9-final/leaf2-2-cfg.txt)  
 
 [Конфигурацию spine1-1 можно увидеть здесь](../LAB9-final/spine1-1-cfg.txt)  
 [Конфигурацию spine1-2 можно увидеть здесь](../LAB9-final/spine1-2-cfg.txt)  
@@ -103,9 +103,9 @@
 
 *соседство nve, маршруты на лифах фабрики:*  
 [leaf1-1](../LAB9-final/leaf1-1-diag.txt)  
-[leaf1-2](../LAB9-final/leaf1-2-diag.txt)  
-[leaf2-1](../LAB9-final/leaf2-1-diag.txt)
-[leaf2-2](../LAB9-final/leaf2-2-diag.txt)
+[leaf1-2](../LAB9-final/leaf1-2-diag.txt)    
+[leaf2-1](../LAB9-final/leaf2-1-diag.txt)  
+[leaf2-2](../LAB9-final/leaf2-2-diag.txt)  
 
 *Диагностика доступности хостов из разных сегментов, а также ip/mac адреса хостов:*  
 [PC1](../LAB9-final/pc1.txt)  
