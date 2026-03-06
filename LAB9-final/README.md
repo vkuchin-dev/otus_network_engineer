@@ -97,7 +97,7 @@
 [Конфигурацию spine1-1 можно увидеть здесь](../LAB9-final/spine1-1-cfg.txt)  
 [Конфигурацию spine1-2 можно увидеть здесь](../LAB9-final/spine1-2-cfg.txt)  
 [Конфигурацию spine2-1 можно увидеть здесь](../LAB9-final/spine2-1-cfg.txt)    
-[Конфигурацию spine2-2 можно увидеть здесь](../LAB8-type5/spine2-2-cfg.txt)  
+[Конфигурацию spine2-2 можно увидеть здесь](../LAB9-final/spine2-2-cfg.txt)  
 
 
 
