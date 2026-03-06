@@ -1,0 +1,51 @@
+PC5
+VPCS> show ip
+
+NAME        : VPCS[1]
+IP/MASK     : 10.10.50.10/24
+GATEWAY     : 10.10.50.254
+DNS         :
+MAC         : 00:50:79:66:68:0d
+
+
+
+VPCS> ping 10.10.10.1
+
+84 bytes from 10.10.10.1 icmp_seq=1 ttl=62 time=26.489 ms
+84 bytes from 10.10.10.1 icmp_seq=2 ttl=62 time=16.011 ms
+84 bytes from 10.10.10.1 icmp_seq=3 ttl=62 time=20.442 ms
+84 bytes from 10.10.10.1 icmp_seq=4 ttl=62 time=22.941 ms
+84 bytes from 10.10.10.1 icmp_seq=5 ttl=62 time=15.731 ms
+
+VPCS> ping 10.10.10.10
+
+84 bytes from 10.10.10.10 icmp_seq=1 ttl=62 time=14.774 ms
+84 bytes from 10.10.10.10 icmp_seq=2 ttl=62 time=12.192 ms
+84 bytes from 10.10.10.10 icmp_seq=3 ttl=62 time=12.758 ms
+84 bytes from 10.10.10.10 icmp_seq=4 ttl=62 time=13.431 ms
+84 bytes from 10.10.10.10 icmp_seq=5 ttl=62 time=10.426 ms
+
+VPCS> ping 10.10.20.1
+
+84 bytes from 10.10.20.1 icmp_seq=2 ttl=254 time=15.752 ms
+84 bytes from 10.10.20.1 icmp_seq=3 ttl=254 time=16.476 ms
+84 bytes from 10.10.20.1 icmp_seq=4 ttl=254 time=20.777 ms
+84 bytes from 10.10.20.1 icmp_seq=5 ttl=254 time=16.371 ms
+
+
+VPCS> ping 10.10.20.10
+
+84 bytes from 10.10.20.10 icmp_seq=1 ttl=62 time=44.188 ms
+84 bytes from 10.10.20.10 icmp_seq=2 ttl=62 time=34.691 ms
+84 bytes from 10.10.20.10 icmp_seq=3 ttl=62 time=27.687 ms
+84 bytes from 10.10.20.10 icmp_seq=4 ttl=62 time=31.686 ms
+84 bytes from 10.10.20.10 icmp_seq=5 ttl=62 time=26.613 ms
+
+VPCS> ping 10.10.50.10
+
+10.10.50.10 icmp_seq=1 ttl=64 time=0.001 ms
+10.10.50.10 icmp_seq=2 ttl=64 time=0.001 ms
+10.10.50.10 icmp_seq=3 ttl=64 time=0.001 ms
+10.10.50.10 icmp_seq=4 ttl=64 time=0.001 ms
+10.10.50.10 icmp_seq=5 ttl=64 time=0.001 ms
+

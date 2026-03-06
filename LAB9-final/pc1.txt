@@ -1,0 +1,42 @@
+PC1 -10.10.10.1  0050.7966.680a 
+
+VPCS> ping 10.10.10.1
+
+10.10.10.1 icmp_seq=1 ttl=64 time=0.001 ms
+10.10.10.1 icmp_seq=2 ttl=64 time=0.001 ms
+10.10.10.1 icmp_seq=3 ttl=64 time=0.001 ms
+10.10.10.1 icmp_seq=4 ttl=64 time=0.001 ms
+10.10.10.1 icmp_seq=5 ttl=64 time=0.001 ms
+
+VPCS> ping 10.10.10.10
+
+84 bytes from 10.10.10.10 icmp_seq=1 ttl=64 time=15.897 ms
+84 bytes from 10.10.10.10 icmp_seq=2 ttl=64 time=15.647 ms
+84 bytes from 10.10.10.10 icmp_seq=3 ttl=64 time=13.900 ms
+84 bytes from 10.10.10.10 icmp_seq=4 ttl=64 time=15.885 ms
+84 bytes from 10.10.10.10 icmp_seq=5 ttl=64 time=11.513 ms
+
+VPCS> ping 10.10.20.1
+
+84 bytes from 10.10.20.1 icmp_seq=1 ttl=63 time=18.863 ms
+84 bytes from 10.10.20.1 icmp_seq=2 ttl=63 time=10.733 ms
+84 bytes from 10.10.20.1 icmp_seq=3 ttl=63 time=11.943 ms
+84 bytes from 10.10.20.1 icmp_seq=4 ttl=63 time=14.846 ms
+84 bytes from 10.10.20.1 icmp_seq=5 ttl=63 time=11.179 ms
+
+VPCS> ping 10.10.20.10
+
+84 bytes from 10.10.20.10 icmp_seq=1 ttl=63 time=23.738 ms
+84 bytes from 10.10.20.10 icmp_seq=2 ttl=63 time=18.772 ms
+84 bytes from 10.10.20.10 icmp_seq=3 ttl=63 time=21.313 ms
+84 bytes from 10.10.20.10 icmp_seq=4 ttl=63 time=20.140 ms
+84 bytes from 10.10.20.10 icmp_seq=5 ttl=63 time=17.405 ms
+
+VPCS> ping 10.10.50.10
+
+84 bytes from 10.10.50.10 icmp_seq=1 ttl=62 time=18.600 ms
+84 bytes from 10.10.50.10 icmp_seq=2 ttl=62 time=18.050 ms
+84 bytes from 10.10.50.10 icmp_seq=3 ttl=62 time=20.793 ms
+84 bytes from 10.10.50.10 icmp_seq=4 ttl=62 time=14.372 ms
+84 bytes from 10.10.50.10 icmp_seq=5 ttl=62 time=15.537 ms
+

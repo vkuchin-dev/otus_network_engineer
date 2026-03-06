@@ -1,0 +1,55 @@
+leaf2-1# sh nve peers
+Interface Peer-IP          State LearnType Uptime   Router-Mac
+--------- ---------------  ----- --------- -------- -----------------
+nve1      172.17.2.1       Up    CP        00:39:19 5000.0003.0007
+nve1      172.17.2.2       Up    CP        04:24:06 5000.0004.0007
+nve1      172.17.2.22      Up    CP        23:04:26 5000.000b.0007
+
+leaf2-1# sh nve vni
+Codes: CP - Control Plane        DP - Data Plane
+       UC - Unconfigured         SA - Suppress ARP
+       SU - Suppress Unknown Unicast
+
+Interface VNI      Multicast-group   State Mode Type [BD/VRF]      Flags
+--------- -------- ----------------- ----- ---- ------------------ -----
+nve1      10010    UnicastBGP        Up    CP   L2 [10]
+nve1      10020    UnicastBGP        Up    CP   L2 [20]
+nve1      10050    UnicastBGP        Up    CP   L2 [50]
+nve1      10099    n/a               Up    CP   L3 [OTUS]
+
+# Маршруты 2-ого типа для vni 10010
+#sh bgp l2 evpn vni-id 10010
+   Network            Next Hop            Metric     LocPrf     Weight Path
+Route Distinguisher: 172.16.2.21:32777    (L2VNI 10010)
+*>l[2]:[0]:[0]:[48]:[0050.7966.6809]:[0]:[0.0.0.0]/216
+                      172.17.2.21                       100      32768 i
+*>i[2]:[0]:[0]:[48]:[0050.7966.680a]:[0]:[0.0.0.0]/216
+                      172.17.2.11                       100          0 65000 650
+01 i
+*>l[2]:[0]:[0]:[48]:[0050.7966.6809]:[32]:[10.10.10.10]/272
+                      172.17.2.21                       100      32768 i
+*>i[2]:[0]:[0]:[48]:[0050.7966.680a]:[32]:[10.10.10.1]/272
+                      172.17.2.11                       100          0 65000 65002 i
+* i                   172.17.2.11                       100          0 65000 65001 i
+
+#
+# Маршруты 2-ого типа для vni 10020
+#sh bgp l2 evpn vni-id 10020
+   Network            Next Hop            Metric     LocPrf     Weight Path
+Route Distinguisher: 172.16.2.21:32787    (L2VNI 10020)
+*>l[2]:[0]:[0]:[48]:[0050.7966.6808]:[0]:[0.0.0.0]/216
+                      172.17.2.21                       100      32768 i
+*>i[2]:[0]:[0]:[48]:[0050.7966.680c]:[0]:[0.0.0.0]/216
+                      172.17.2.11                       100          0 65000 65001 i
+* i                   172.17.2.11                       100          0 65000 65002 i
+
+#Маршруты 2-ого типа для vni 10050
+   Network            Next Hop            Metric     LocPrf     Weight Path
+Route Distinguisher: 172.16.2.21:32817    (L2VNI 10050)
+*>i[2]:[0]:[0]:[48]:[0050.7966.680d]:[0]:[0.0.0.0]/216
+                      172.17.2.22                       100          0 i
+*>i[2]:[0]:[0]:[48]:[0050.7966.680d]:[32]:[10.10.50.10]/272
+                      172.17.2.22                       100          0 i
+
+
+
